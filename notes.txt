@@ -1,0 +1,2 @@
+http://localhost:port/v2/api-docs
+http://localhost:port/swagger-ui/index.html
