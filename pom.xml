@@ -46,8 +46,5 @@
   	<module>order-service</module>
   	<module>cart-service</module>
   	<module>mail-service</module>
-  	<module>eureka-service</module>
-  	<module>zuul-gateway</module>
-  	<module>oauth2-service</module>
   </modules>
 </project>
