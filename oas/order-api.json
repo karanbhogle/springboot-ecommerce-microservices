@@ -1,0 +1,39 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Order Service API",
+        "version": "1.0.0",
+        "description": "API endpoints for managing orders"
+    },
+    "paths": {
+        "/orders": {
+            "post": {
+                "summary": "Create Order",
+                "description": "Create a new order",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "userId": {
+                                        "type": "integer"
+                                    },
+                                    "totalAmount": {
+                                        "type": "number"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Order created successfully"
+                    }
+                }
+            }
+        }
+    }
+}

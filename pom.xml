@@ -1,50 +1,100 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <packaging>pom</packaging>
   <parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.2</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.2.2</version>
+    <relativePath /> <!-- lookup parent from repository -->
+  </parent>
   <groupId>net.karanbhogle</groupId>
   <artifactId>spring-ecommerce-microservices</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>Spring-Microservices</name>
   <description>This is the parent project for E-Commerce Project</description>
   <properties>
-		<java.version>17</java.version>
+    <java.version>17</java.version>
   </properties>
   <dependencies>
     <!-- Spring Boot Starter Web for REST APIs -->
     <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
     <!-- Spring Boot Starter Data MongoDB for MongoDB support -->
     <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-mongodb</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-mongodb</artifactId>
     </dependency>
- 	<dependency>
-    	<groupId>org.projectlombok</groupId>
-    	<artifactId>lombok</artifactId>
-    	<scope>provided</scope>
-	</dependency>
-	<dependency>
-    	<groupId>org.springdoc</groupId>
-    	<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-    	<version>2.2.0</version>
-	</dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>2.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openapitools</groupId>
+      <artifactId>openapi-generator-maven-plugin</artifactId>
+      <version>7.5.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>okhttp</artifactId>
+      <version>4.12.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.10.1</version>
+    </dependency>
+    <dependency>
+      <groupId> jakarta.annotation</groupId>
+      <artifactId>jakarta.annotation-api</artifactId>
+      <version>3.0.0</version>
+    </dependency>
 
   </dependencies>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.openapitools</groupId>
+        <artifactId>openapi-generator-maven-plugin</artifactId>
+        <version>7.5.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <inputSpec>oas/cart-api.json</inputSpec>
+              <inputSpec>oas/product-api.json</inputSpec>
+              <inputSpec>oas/user-api.json</inputSpec>
+              <inputSpec>oas/order-api.json</inputSpec>
+              <outputDir>src/main/java/net/karanbhogle/ecommerce/generated</outputDir>
+              <generatorName>java</generatorName>
+              <configOptions>
+                <additionalProperty name="interfacePrefix" value="Api" />
+              </configOptions>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
   <modules>
-  	<module>product-service</module>
-  	<module>user-service</module>
-  	<module>order-service</module>
-  	<module>cart-service</module>
-  	<module>mail-service</module>
+    <module>product-service</module>
+    <module>user-service</module>
+    <module>order-service</module>
+    <module>cart-service</module>
+    <module>mail-service</module>
   </modules>
 </project>

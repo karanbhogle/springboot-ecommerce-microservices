@@ -1,0 +1,33 @@
+# Ignore generated classes
+target/generated-sources/
+user-service/target
+order-service/target
+cart-service/target
+product-service/target
+mail-service/target
+
+# Target directory for compiled classes and resources
+target/
+
+# IDE-specific configuration files
+.idea/
+.project
+.classpath
+*.iml
+
+# Local Maven configuration
+pom.xml.local
+
+# Common log files
+*.log
+
+# OS-specific temporary files
+*~
+*.swp
+
+# OpenAPI Generator output (adjust based on your configuration)
+target/generated-sources/openapi/
+
+# Optional: Additional ignores
+*.class  # Ignore all class files (if desired)
+reports/  # Ignore generated reports directory (if applicable)
